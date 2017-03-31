@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="app">
     <img src="./images/logo.png">
     <p>{{message}}</p>
     <input type="text" v-model="message">
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#app {
+.app {
   margin: 50px;
   text-align: center;
   font-family: sans-serif;

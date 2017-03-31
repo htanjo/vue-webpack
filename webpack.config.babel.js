@@ -11,6 +11,11 @@ export default {
     filename: IS_PROD ? '[name].[chunkhash:8].js' : '[name].js',
     path: path.resolve(__dirname, 'dist')
   },
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.esm.js'
+    }
+  },
   module: {
     rules: [
       {
