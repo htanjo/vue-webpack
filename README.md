@@ -10,6 +10,7 @@
 - Sass
 - ESLint
 - Build for production (Minify + Hash filename)
+- Yarn
 
 ## Workflow
 Setup:
