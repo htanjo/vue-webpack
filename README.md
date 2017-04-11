@@ -13,20 +13,21 @@
 - Yarn
 
 ## Workflow
-Setup:
+**Setup:** Install dependencies for the project.
 
-```
+```sh
 $ npm install
+# or run `yarn` if you have Yarn installed.
 ```
 
-Develop:
+**Develop:** Start dev server at localhost:3000.
 
-```
+```sh
 $ npm start
 ```
 
-Build for produciton:
+**Build:** Output minified files for production.
 
-```
+```sh
 $ npm run build
 ```
