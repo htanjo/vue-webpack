@@ -40,6 +40,12 @@ export default {
         }
       },
       {
+        test: /\.scss$/,
+        use: IS_PROD ?
+          ExtractTextWebpackPlugin.extract(['css-loader', 'sass-loader']) :
+          ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
