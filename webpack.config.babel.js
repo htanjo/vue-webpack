@@ -61,6 +61,7 @@ export default {
     new ExtractTextWebpackPlugin('[name].[hash:8].css'),
     new CleanWebpackPlugin(['dist'])
   ],
+  devtool: IS_PROD ? false : 'eval-source-map',
   devServer: {
     port: 3000,
     contentBase: path.join(__dirname, 'dist'),
