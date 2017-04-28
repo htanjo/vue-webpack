@@ -1,5 +1,5 @@
-import './main.scss';
 import Vue from 'vue';
+import './main.scss';
 import App from './components/App.vue';
 import store from './store';
 
@@ -7,6 +7,5 @@ import store from './store';
 new Vue({
   el: '#app',
   store,
-  template: '<App />',
-  components: {App}
+  render: h => h(App)
 });
