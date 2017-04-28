@@ -40,13 +40,19 @@ export default {
         }
       },
       {
+        test: /\.css$/,
+        use: IS_PROD ?
+          ExtractTextWebpackPlugin.extract('css-loader') :
+          ['style-loader', 'css-loader']
+      },
+      {
         test: /\.scss$/,
         use: IS_PROD ?
           ExtractTextWebpackPlugin.extract(['css-loader', 'sass-loader']) :
           ['style-loader', 'css-loader', 'sass-loader']
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
         loader: 'file-loader',
         options: {
           name: IS_PROD ? '[name].[hash:8].[ext]' : '[name].[ext]'
