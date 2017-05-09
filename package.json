@@ -29,7 +29,7 @@
     "node-sass": "^4.5.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
-    "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony",
+    "uglify-js": "mishoo/UglifyJS2#harmony",
     "vue-loader": "^11.3.3",
     "vue-template-compiler": "^2.2.6",
     "webpack": "^2.3.2",
