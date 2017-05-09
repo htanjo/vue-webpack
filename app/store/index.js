@@ -5,11 +5,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    title: 'Vue.js'
+    items: ['Webpack', 'Babel', 'Yarn', 'Sass', 'ESLint', 'UglifyJS']
   },
   mutations: {
-    updateTitle(state, value) {
-      state.title = value;
+    addItem(state, value) {
+      state.items.push(value);
     }
   }
 });

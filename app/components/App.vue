@@ -1,61 +1,64 @@
 <template>
-  <div class="app" v-bind:class="theme">
+  <div class="app">
     <img src="../images/logo.png">
     <h1>{{message}}</h1>
-    <input type="text" v-model="title">
-    <div class="switch">
-      <label><input type="radio" v-model="theme" value="day"> Day</label>
-      <label><input type="radio" v-model="theme" value="night"> Night</label>
-    </div>
+    <form @submit.prevent="addItem">
+      <input type="text" v-model.trim="item">
+      <button>Add</button>
+    </form>
+    <list :items="this.items"></list>
   </div>
 </template>
 
 <script>
+import List from './List.vue';
+import {mapState} from 'vuex';
+
 export default {
   name: 'app',
   data() {
     return {
-      theme: 'day'
+      item: 'Vue.js'
     };
   },
   computed: {
-    title: {
-      get() {
-        return this.$store.state.title;
-      },
-      set(value) {
-        this.$store.commit('updateTitle', value);
-      }
-    },
+    ...mapState(['items']),
     message() {
-      const greeting = this.theme === 'night' ? 'Good night' : 'Hello';
-      return `${greeting}, ${this.title}!`;
+      return this.item ? `Hello ${this.item}!` : 'Any other items?';
     }
-  }
+  },
+  methods: {
+    addItem() {
+      if (!this.item) {
+        return;
+      }
+      this.$store.commit('addItem', this.item);
+      this.item = '';
+    }
+  },
+  components: {List}
 };
 </script>
 
 <style lang="scss" scoped>
 .app {
-  box-sizing: border-box;
-  min-height: 100vh;
-  padding: 50px;
+  width: 480px;
+  margin: 40px auto;
   text-align: center;
-  transition: 0.4s all;
-  &.night {
-    color: #ccc;
-    background-color: #222;
-  }
 }
 h1 {
   font-weight: normal;
   color: #42b983;
 }
-input[type=text] {
-  padding: 4px 8px;
-  font-size: 100%;
-}
-.switch {
-  margin-top: 10px;
+form {
+  margin-bottom: 40px;
+  input {
+    padding: 4px 8px;
+    font-size: 100%;
+  }
+  button {
+    padding: 4px 8px;
+    font-size: 100%;
+  }
 }
 </style>
