@@ -9,7 +9,7 @@
 - ES6 using Babel
 - Sass
 - ESLint
-- Build for production (Minify + Hash filename)
+- Build for production (Code splitting + Minify + Hash filename)
 - Yarn
 
 ## Workflow

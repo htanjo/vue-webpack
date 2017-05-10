@@ -1,8 +1,10 @@
 import path from 'path';
+import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 
+const {CommonsChunkPlugin} = webpack.optimize;
 const IS_PROD = process.env.NODE_ENV === 'production';
 
 export default {
@@ -65,6 +67,11 @@ export default {
       template: './app/index.html'
     }),
     new ExtractTextWebpackPlugin('[name].[hash:8].css'),
+    new CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: module => module.context && module.context.indexOf('node_modules') !== -1
+    }),
+    new CommonsChunkPlugin({name: 'manifest'}),
     new CleanWebpackPlugin(['dist'])
   ],
   devtool: IS_PROD ? false : 'eval-source-map',
